@@ -1,0 +1,25 @@
+.par{
+    display: flex;
+    text-decoration: none;
+}
+.par div{
+    align-items: flex;
+    justify-content:right;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    text-decoration: none;
+}
+.h1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em;
+    text-decoration: none;
+}
