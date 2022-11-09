@@ -1,0 +1,43 @@
+.par{
+    display: flex;
+    text-decoration: none;
+}
+.um{
+    display: flex;
+    text-decoration: none;
+}
+.par div{
+    justify-content:center;
+    
+}
+
+.um div{
+    justify-content:center;
+    margin-right: 41.7em;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5em;
+    
+}
+.h1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.p{
+    padding: 0.5em;
+    color: #7b7b7b;
+}
+
