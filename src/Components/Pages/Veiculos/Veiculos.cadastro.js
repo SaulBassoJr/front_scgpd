@@ -17,7 +17,7 @@ function VeiculosCadastro(){
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
                     type="text" text="*Placa" name="placa" mask="aaa-9999" placeholder="Insira o placa"/>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="integer" text="*N° Renavan" name="renavan" mask="99999999999" placeholder="Insira o renavan" maxlength="11"/>
+                    type="integer" text="*N° Renavan" name="renavan" mask="99999999999" placeholder="Insira o renavan" />
             </div>
             <div className={styles.par}>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}

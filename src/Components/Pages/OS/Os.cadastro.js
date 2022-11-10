@@ -15,7 +15,7 @@ function OsCadastro(){
 
             <div className={styles.par}>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="string" text="*Placa" name="placa" placeholder="Insira a placa"/>
+                    type="string" text="*Placa" name="placa" mask="aaa-9*99" placeholder="Insira a placa"/>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
                     type="text" text="*Moodelo" name="name" placeholder="Insira o modelo do veiculo"/>
                 <Select name="category_id" text="*Debitos?"/>
@@ -24,9 +24,9 @@ function OsCadastro(){
 
             <div className={styles.par}>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="text" text="*Nome do Cliente" name="name" placeholder="Insira o nome"/>
+                    type="text" text="*Nome do Cliente" name="name" placeholder="Insira o nome" maxlength="100"/>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="integer" text="*CPF" name="cpf" placeholder="Insira o CPF"/>
+                    type="integer" text="*CPF" name="cpf" mask="999.999.999-99" placeholder="Insira o CPF"/>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
                     type="text" text="*N° Telefone Celular" name="numero" placeholder="Insira o numero"/>
                 <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
