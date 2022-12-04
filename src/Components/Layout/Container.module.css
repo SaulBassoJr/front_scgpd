@@ -1,9 +1,10 @@
 .container{
-    width: auto;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    padding-top: 71px;
 }
 
 .min-height{

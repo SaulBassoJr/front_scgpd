@@ -4,11 +4,20 @@
 }
 
 .par div{
-    align-items: flex;
+    align-items: right;
     justify-content:right;
 }
 
 .form{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    text-decoration: none;
+    
+}
+
+.titulo{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,11 +25,35 @@
     padding: 1em;
     text-decoration: none;
 }
-.h1{
+
+.titulo h1{
+    align-items: center;
+    text-decoration: none;
+    color: #343a40;
+}
+
+.titulo h1 span{
+    color: #fb3;
+    padding: 0 .2em;
+    background-color: #222;
+}
+
+
+.item{
     width: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5em;
+    padding: 1em;
     text-decoration: none;
+}
+.item tr{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.item th{
+    color: #FFBB33;
+    background-color: #343a40;
+    align-items: center;
 }
