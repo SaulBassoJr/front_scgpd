@@ -1,5 +1,5 @@
 import React from 'react'
-import ServicosTable from './ServicosTable'
+import ServicoDelete from './ServicoDelete'
 import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
@@ -22,6 +22,20 @@ function ServicosListagem(){
             .catch((err) => console.log(err))
     }, [])
 
+    function removeServico(id) {
+        fetch(`http://127.0.0.1:8000/api/client/${id}`, {
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json', 
+        },
+        }).then((resp) => resp.json())
+        .then(data => {
+            setServicos(servicos.filter((servico) => servico.id !== id))
+        })
+        .catch((err) => console.log(err))
+    }
+
+
     return(
         <div className={styles.form}>
             <div className={styles.titulo}>
@@ -36,32 +50,26 @@ function ServicosListagem(){
                 </tr>
             </thead>
             <tbody >
-                <tr className={styles.item}>
-                    <td>
                     {servicos.length > 0 && servicos.map((servico) =>
-                        <ServicosTable
-                            id={servico.id}
-                            nome={servico.nome} 
-                        />
+                        <tr>  
+                            <td>
+                            {servico.nome}
+                            </td>
+                            <td>
+                            {servico.valorDespachante}
+                            </td>
+                            <td>
+                            {servico.valorDetran}
+                            </td>
+                            <td>
+                                <ServicoDelete 
+                                    id={servico.id} 
+                                    handleRemove={removeServico}
+                                />
+                            </td>
+                        </tr>
                     )}
-                    </td>
-                    <td>
-                    {servicos.length > 0 && servicos.map((servico) =>
-                        <ServicosTable
-                            valorDespa={servico.valorDespachante}
-                        />
-                    )}
-                    </td>
-                    <td>
-                    {servicos.length > 0 && servicos.map((servico) =>
-                        <ServicosTable
-                            valorDetran={servico.valorDetran}
-                        />
-                    )}
-                    </td>
-                </tr>
             </tbody>
-
         </Table>
         </div>
     )

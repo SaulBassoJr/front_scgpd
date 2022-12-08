@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FaRegTimesCircle, FaRegSave } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Input from "../../Forms/Input";
@@ -6,13 +7,9 @@ import Select from "../../Forms/Select";
 import SubmitButton from "../../Forms/SubmitButton";
 import styles from "./Cliente.module.css";
 
-import Button from 'react-bootstrap/Button';
 
 
-
-function ClientesCadastro({handleSubmit, clienteData}) {
-  const [cliente, setCliente] = useState(clienteData || {})
-
+function ClienteEdit() {
 
   const [uf, setUf] = useState([]);
   const [listUf, setListUf] = useState([]);
@@ -47,36 +44,39 @@ function ClientesCadastro({handleSubmit, clienteData}) {
     }
   }, [uf]);
 
-  const submit = (e) => {
-    e.preventDefault()
-    handleSubmit(cliente)
-  }
+  const {id} = useParams()
+  console.log(id) 
+  const [cliente, setCliente] = useState([])
 
-  function handleChange(e) {
-    setCliente({ ...cliente, [e.target.name]: e.target.value })
-    console.log(cliente)
-  }
-  function handleSelect(e) {
-    setCliente({ ...cliente, uf: {
-      id: e.target.value,
-      name: e.target.options[e.target.selectedIndex]
-    } })
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/client/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then((resp) => resp.json())
+    .then((data) => {
+        setCliente(data.data)
+    })
+    .catch(err => console.log)
+  }, [id])
 
-    console.log(cliente)
-  }
+
 
 
   return (
-    <form  className={styles.form}>
+    <form className={styles.form}>
+      <div className={styles.titulo}>
+      <h1 className={styles.h1}> Editar Cliente</h1>
       
+      </div>
       <div>
         <Input
           type="text"
           text="*Nome"
-          name="nome"
+          name="name"
           placeholder="Insira o nome do cliente"
           maxlength="100"
-          handleOnChange={handleChange}
         />
       
         </div>
@@ -88,7 +88,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="cpf"
           mask="999.999.999-99"
           placeholder="Insira o CPF"
-          handleOnChange={handleChange}
         />
         <Input
           type="integer"
@@ -96,7 +95,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="rg"
           mask="99.999.999-9"
           placeholder="Insira o RG"
-          handleOnChange={handleChange}
         />
       </div>
       <div className={styles.form_control}>
@@ -117,7 +115,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="cep"
           mask="99999-999"
           placeholder="Insira o CEP"
-          handleChange={handleChange}
         />
         <Input
           type="text"
@@ -125,7 +122,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="logradouro"
           placeholder="Insira o logradouro"
           maxlength="100"
-          handleOnChange={handleChange}
         />
         </div>
       <div className={styles.par}>
@@ -135,7 +131,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="bairro"
           placeholder="Insira o bairro"
           maxlength="100"
-          handleOnChange={handleChange}
         />
         <Input
           type="text"
@@ -143,7 +138,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
           name="numero"
           placeholder="Insira o numero"
           maxlength="5"
-          handleOnChange={handleChange}
         />
       </div>
       <div>
@@ -152,7 +146,6 @@ function ClientesCadastro({handleSubmit, clienteData}) {
         <select
           value={uf}
           onChange={e => setUf(e.target.value)}
-          
           name="uf_id"  
         >
           <option>Selecione...</option>
@@ -175,7 +168,7 @@ function ClientesCadastro({handleSubmit, clienteData}) {
         </div>
         </div>
         <div >
-        <Select name="category_id" text="*Tipo de Telefone"  />
+        <Select name="category_id" text="*Tipo de Telefone" />
         <Input
           type="string"
           text="*N° Telefone Celular"
@@ -184,13 +177,15 @@ function ClientesCadastro({handleSubmit, clienteData}) {
         />
       </div>
       <div className={styles.Boton}>
-        <Button variant="primary" href={'/clientes'} onClick={submit}> <FaRegSave /> Salvar</Button>
-        <h4> | </h4>
-        <Button variant="danger" href={'/clientes'}> <FaRegTimesCircle /> Cancelar</Button>
+        <SubmitButton type="submit" icon={<FaRegSave />} text="Salvar" /> 
+
+        <Link to="/clientes">
+          <SubmitButton icon={<FaRegTimesCircle />} text="Cancelar" />
+        </Link>
       </div>
       
     </form>
   );
 }
 
-export default ClientesCadastro;
+export default ClienteEdit;

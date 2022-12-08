@@ -1,34 +1,82 @@
 import styles from './Veiculos.module.css'
 import Input from '../../Forms/Input'
 import Select from '../../Forms/Select'
-import SubmitButton from '../../Forms/SubmitButton'
 import {FaRegSave, FaRegTimesCircle} from 'react-icons/fa'
-import {Link} from 'react-router-dom'
 import {useState} from 'react'
 
-function VeiculosCadastro(){
-    const [formData, setFormData] = useState();
+import Button from 'react-bootstrap/Button';
+
+function VeiculosCadastro({handleSubmit, veiculoData}){
+    const [veiculo, setVeiculo] = useState(veiculoData || {})
+
+    const submit = (e) => {
+        e.preventDefault()
+        handleSubmit(veiculo)
+    }
+    
+    function handleChange(e) {
+        setVeiculo({ ...veiculo, [e.target.name]: e.target.value })
+        console.log(veiculo)
+    }
+    
     return(
         <form className={styles.form}>
-            <h1 className={styles.h1}> Cadastro de Veiculos</h1>
             <div className={styles.par}>
-                <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="text" text="*Proprietário" name="name" placeholder="Insira o nome do proprietário" maxlength="100"/>
-                <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="text" text="*Placa" name="placa" mask="aaa-9999" placeholder="Insira o placa"/>
-                <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="integer" text="*N° Renavan" name="renavan" mask="99999999999" placeholder="Insira o renavan" />
+                <Input 
+                    type="text" 
+                    text="*Proprietário" 
+                    name="nome" 
+                    placeholder="Insira o nome do proprietário" 
+                    maxlength="100"
+                    handleOnChange={handleChange}
+                />
+                <Input
+                    type="text" 
+                    text="*Placa" 
+                    name="placa" 
+                    mask="aaa-9999" 
+                    placeholder="Insira o placa"
+                    handleOnChange={handleChange}
+                />
+                <Input
+                    type="integer" 
+                    text="*N° Renavan" 
+                    name="renavan" 
+                    mask="99999999999" 
+                    placeholder="Insira o renavan" 
+                    handleOnChange={handleChange}
+                />
             </div>
             <div className={styles.par}>
-                <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="text" text="*Marca" name="name" placeholder="Insira a marca"/>
-                <Input handleOnChange={(event) =>setFormData((e) => ({ ...e, rg: event.target.value}))}
-                    type="string" text="*Modelo" name="name" placeholder="Insira o modelo"/>
-                <Select name="category_id" text="*Débitos"/>
+                <Input
+                    type="text" 
+                    text="*Marca" 
+                    name="marca" 
+                    placeholder="Insira a marca"
+                    handleOnChange={handleChange}
+                />
+                <Input
+                    type="string" 
+                    text="*Modelo" 
+                    name="modelo" 
+                    placeholder="Insira o modelo"
+                    handleOnChange={handleChange}
+                />
             </div>
-            <div className={styles.par}>
-                <Link to ='/veiculos'><SubmitButton icon={<FaRegSave/>} text="Salvar"/></Link>
-                <Link to ='/veiculos'><SubmitButton icon={<FaRegTimesCircle/>} text="Cancelar"/></Link>
+            <div className={styles.form_control}>
+                <label htmlFor="debitos_id">*Débitos</label>
+                <select
+                    name="debitos_id"  
+                >
+                    <option>Selecione...</option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+            </div>
+            <div className={styles.Boton}>
+                <Button variant="primary" href={'/veiculos'} onClick={submit}> <FaRegSave /> Salvar</Button>
+                <h4> | </h4>
+                <Button variant="danger" href={'/veiculos'}> <FaRegTimesCircle /> Cancelar</Button>
             </div>
         </form>
     )

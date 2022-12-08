@@ -5,6 +5,7 @@ import SubmitButton from '../../../Forms/SubmitButton'
 import {FaRegSave, FaRegTimesCircle} from 'react-icons/fa'
 import { useState } from 'react'
 import {Link} from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
 
 function UsuariosCadastro(){
     const [formData, setFormData] = useState();
@@ -29,8 +30,9 @@ function UsuariosCadastro(){
                     type="password" text="*Confirme a Senha" name="password" placeholder="Confirme a senha"/>
             </div>
             <div className={styles.par}>
-                <Link to ='/usuarios'><SubmitButton icon={<FaRegSave/>} text="Salvar"/></Link>
-                <Link to ='/usuarios'><SubmitButton icon={<FaRegTimesCircle/>} text="Cancelar"/></Link>
+                <Button variant="primary" href={'/usuarios'}> <FaRegSave /> Salvar</Button>
+                <h4> | </h4>
+                <Button variant="danger" href={'/usuarios'}> <FaRegTimesCircle /> Cancelar</Button>
             </div>
         </form>
     )

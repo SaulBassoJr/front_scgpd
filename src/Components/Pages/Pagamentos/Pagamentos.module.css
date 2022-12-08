@@ -1,25 +1,93 @@
 .par{
+    width: 100%;
     display: flex;
     text-decoration: none;
 }
+
 .par div{
-    align-items: flex;
+    width: 100%;
+    align-items: right;
     justify-content:right;
+}
+
+.Boton{
+    display: flex;
+    text-decoration: none;
 }
 
 .form{
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    text-decoration: none;
+    
+}
+
+.titulo {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1em;
+    text-decoration: none;
+    justify-content: right;
+}
+
+.inputBusca{
+    padding-bottom: 1em;
+    align-items: center;
+    text-decoration: none;
+}
+
+.titulo h1{
+    align-items: center;
+    text-decoration: none;
+    color: #343a40;
+    position: relative;
+}
+
+.titulo h1 span{
+    color: #fb3;
+    padding: 0 .2em;
+    background-color: #222;
+}
+
+
+.item{
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 1em;
     text-decoration: none;
 }
-.h1{
+.item tr{
     width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.item th{
+    color: #FFBB33;
+    background-color: #343a40;
+    align-items: center;
+}
+
+.form_control{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0.5em;
-    text-decoration: none;
+    margin-bottom: 1em;
+}
+
+.form_control label {
+    margin-bottom: .6em;
+    font-weight: bold;
+}
+
+.form_control select{
+    padding: 0.6em 3.5em;
+    border-radius: 0.5em;
+    margin-right: 1em;
+    margin-left: 0em;
+    margin-right: auto;
 }
