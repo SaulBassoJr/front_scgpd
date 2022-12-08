@@ -11,7 +11,7 @@ function ServicoDelete({id, handleRemove}){
   return(
         <div>
           <Button variant="danger"  onClick={remove}> <FaRegTrashAlt/> </Button>
-          <Button variant="primary" href={`/veiculos/${id}`} ><FaRegEdit/></Button>
+          <Button variant="primary" href={`/servicos/${id}`} ><FaRegEdit/></Button>
       </div>
     )
 }

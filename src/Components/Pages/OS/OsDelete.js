@@ -11,7 +11,6 @@ function OsDelete({id, handleRemove}){
   return(
         <div>
           <Button variant="danger"  onClick={remove}> <FaRegTrashAlt/> </Button>
-          <Button variant="primary" href={`/os/${id}`} ><FaRegEdit/></Button>
       </div>
     )
 }
